@@ -92,7 +92,7 @@ function ProductList() {
             category: "Insect Repellent Plants",
             plants: [
                 {
-                    name: "oregano",
+                    name: "Oregano",
                     image: "https://cdn.pixabay.com/photo/2015/05/30/21/20/oregano-790702_1280.jpg",
                     description: "The oregano plants contains compounds that can deter certain insects.",
                     cost: "$10"
@@ -268,8 +268,8 @@ const handlePlantsClick = (e) => {
         {!showCart? (
         <div className="product-grid">
             {plantsArray.map((plantObj) => (
+            <><h1><div className='plant_heading'>{plantObj.category}</div></h1>
             <div className='product-list'>
-                <h1><div>{plantObj.category}</div></h1>
                 {plantObj.plants.map(
                     (plant) => (
                         <div className='product-card'>
@@ -279,7 +279,7 @@ const handlePlantsClick = (e) => {
                             <div className='product-price'> {plant.cost} </div>
                         </div>
                     ))}
-            </div>
+            </div></>
             ))}
         </div>
  ) :  (
