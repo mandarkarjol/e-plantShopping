@@ -273,10 +273,11 @@ const handlePlantsClick = (e) => {
                 {plantObj.plants.map(
                     (plant) => (
                         <div className='product-card'>
-                            <h2 className='plantname_heading'> {plant.name} </h2>
+                            <h2 className='product-title'> {plant.name} </h2>
                             <img className="product-image" src={plant.image} alt={plant.name}/>
-                            <div> {plant.description}</div>
                             <div className='product-price'> {plant.cost} </div>
+                            <div> {plant.description}</div>
+                            <button className='product-button' onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                         </div>
                     ))}
             </div></>
