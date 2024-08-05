@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
+import addItem from './CartSlice';
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -246,6 +247,15 @@ const handlePlantsClick = (e) => {
     e.preventDefault();
     setShowCart(false);
   };
+  const [addedToCart, setAddedToCart] = useState({});
+
+  const handleAddToCart = (product) => {
+    dispatch(addItem(product));
+    setAddedToCart((prevState) => ({
+       ...prevState,
+       [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
+     }));
+  };
     return (
         <div>
              <div className="navbar" style={styleObj}>
@@ -271,8 +281,8 @@ const handlePlantsClick = (e) => {
             <><h1><div className='plant_heading'>{plantObj.category}</div></h1>
             <div className='product-list'>
                 {plantObj.plants.map(
-                    (plant) => (
-                        <div className='product-card'>
+                    (plant, plantIndex) => (
+                        <div className='product-card' key={plantIndex}>
                             <h2 className='product-title'> {plant.name} </h2>
                             <img className="product-image" src={plant.image} alt={plant.name}/>
                             <div className='product-price'> {plant.cost} </div>
