@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
+import { useState } from 'react';
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
@@ -18,6 +19,7 @@ const CartItem = ({ onContinueShopping }) => {
     return totalAmount;
   };
 
+  const [showProductList, setShowProductList] = useState(false);
   const handleContinueShopping = (e) => {
     setShowProductList(true);
   };
