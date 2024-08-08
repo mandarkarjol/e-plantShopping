@@ -220,7 +220,7 @@ function ProductList() {
     padding: '15px',
     display: 'flex',
     justifyContent: 'space-between',
-    alignIems: 'center',
+    alignItems: 'center',
     fontSize: '20px',
    }
    const styleObjUl={
@@ -290,9 +290,9 @@ const handlePlantsClick = (e) => {
                             <img className="product-image" src={plant.image} alt={plant.name}/>
                             <div className='product-price'> {plant.cost} </div>
                             <div> {plant.description}</div>
-                            <button className={`product-button ${addedToCart.includes(plant.name) ? 'Added to Cart' : ''}`}
+                            <button className={`product-button ${Object.keys(addedToCart).includes(plant.name) ? 'added-to-cart' : ''}`}
                             onClick={() => handleAddToCart(plant)}
-                            disabled={addedToCart.includes(plant.name)} /* Disable button if plant in cart */ > 
+                            disabled={Object.keys(addedToCart).includes(plant.name)} /* Disable button if plant in cart */ > 
                             Add to Cart
                             </button>
                         </div>
