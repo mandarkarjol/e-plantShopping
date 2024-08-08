@@ -11,17 +11,20 @@ const CartItem = ({ onContinueShopping }) => {
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
     let totalAmount = 0;
-    cart.map((item) => {
-        let qty = item.quantity;
-        let cost = item.cost;
-        totalAmount += qty * cost;
-    })
+    cart.forEach(item => {
+      const qty = item.quantity;
+      const cost = parseFloat(item.cost.replace('$', '')); // Remove '$' and convert to number
+      totalAmount += qty * cost;
+    });
     return totalAmount;
   };
 
-  const [showProductList, setShowProductList] = useState(false);
+ 
   const handleContinueShopping = (e) => {
-    setShowProductList(true);
+    e.preventDefault(); // Prevent default button action
+    if (onContinueShopping) { // Check if the function is provided
+      onContinueShopping(e); // Call the parent function
+    }
   };
 
 
