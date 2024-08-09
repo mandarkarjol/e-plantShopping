@@ -282,18 +282,12 @@ const handleNavigate = () => {
                 <div className="tag">
                     <div className="luxury">
                         <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
-                        <button onClick={handleNavigate} 
-                        style={{
-                        background: 'none',
-                        border: 'none',
-                        padding: 0,
-                        textDecoration: 'none',
-                        cursor: 'pointer' }}>
+                        <a href='/' style = {{textDecoration: 'none'}}>
                             <div>
-                                <h3 style={{color:'white', fontSize: '20px', textAlign:'left'}}>Paradise Nursery</h3>
-                                <i style={{color:'white', fontSize: '20px'}}>Where Green Meets Serenity</i>
+                                <h3 style={{color:'white'}}>Paradise Nursery</h3>
+                                <i style={{color:'white'}}>Where Green Meets Serenity</i>
                             </div>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div style={styleObjUl}>
