@@ -8,6 +8,7 @@ function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
+    const cartItems = useSelector(state => state.cart.items);
     const plantsArray = [
         {
             category: "Air Purifying Plants",
@@ -261,6 +262,16 @@ const handleAddToCart = (product) => {
        [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
      }));
   };
+  
+  // Update addedToCart state based on items in the cart
+  useEffect(() => { 
+    const updatedAddedToCart = {}; 
+    cartItems.forEach(item => {
+        updatedAddedToCart[item.name] = true;
+    });
+    setAddedToCart(updatedAddedToCart);
+}, [cartItems]);
+
     return (
         <div>
              <div className="navbar" style={styleObj}>
