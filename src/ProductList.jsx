@@ -305,7 +305,7 @@ const handleAddToCart = (product) => {
                             <button className={`product-button ${Object.keys(addedToCart).includes(plant.name) ? 'added-to-cart' : ''}`}
                             onClick={() => handleAddToCart(plant)}
                             disabled={Object.keys(addedToCart).includes(plant.name)} /* Disable button if plant in cart */ > 
-                            Add to Cart
+                            {Object.keys(addedToCart).includes(plant.name) ? 'Added to Cart' : 'Add to Cart'}
                             </button>
                         </div>
                     ))}
