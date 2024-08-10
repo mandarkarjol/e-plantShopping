@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './ProductList.css'
+import './App.css';
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
 import { useDispatch } from 'react-redux';
+import App from './App';
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
-    const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
+    const [showLanding, setShowLanding] = useState(false); // State to control the visibility of the About Us page
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
     const cartItems = useSelector(state => state.cart.items);
     const plantsArray = [
@@ -243,13 +245,17 @@ function ProductList() {
 
 const handlePlantsClick = (e) => {
     e.preventDefault();
-    setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
     setShowCart(false); // Hide the cart when navigating to About Us
 };
 
 const handleContinueShopping = (e) => {
     e.preventDefault();
     setShowCart(false);
+};
+
+const handleLandingClick = (e) => {
+    e.preventDefault();
+    setShowLanding(true); // Set ShowLanding to true when Paradise Nursery link is clicked
 };
   
 const dispatch = useDispatch();
@@ -272,17 +278,17 @@ const handleAddToCart = (product) => {
     setAddedToCart(updatedAddedToCart);
 }, [cartItems]);
 
-const handleNavigate = () => {
-    window.location.href = '/'; // Navigate to the landing page
-  };
-
     return (
+        <>
+        {showLanding ? ( 
+        <App />
+    ):(
         <div>
              <div className="navbar" style={styleObj}>
                 <div className="tag">
                     <div className="luxury">
                         <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
-                        <a href='https://mandarkarjol.github.io/e-plantShopping/' style = {{textDecoration: 'none'}}>
+                        <a href="#" onClick={(e)=>handleLandingClick(e)} style = {{textDecoration: 'none'}}>
                             <div>
                                 <h3 style={{color:'white'}}>Paradise Nursery</h3>
                                 <i style={{color:'white'}}>Where Green Meets Serenity</i>
@@ -329,8 +335,11 @@ const handleNavigate = () => {
         </div>
  ) :  (
     <CartItem onContinueShopping={handleContinueShopping}/>
-)}
-    </div>
+)}    
+</div>
+    )
+}
+</>
     );
 }
 
